@@ -15,10 +15,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TheaterSeatEntity {
 
+//    this class just store's the seat type and seat number
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
 
     @Enumerated(value = EnumType.STRING)
     private SeatType seatType;
