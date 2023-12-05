@@ -29,10 +29,9 @@ public class ShowEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private LocalDate showDate;
+    private LocalDate showDate; // yyyy-mm-dd format
 
-    private LocalTime showTime;
-
+    private LocalTime showTime; // 1:12:00
 
     @Enumerated(value = EnumType.STRING)
     private ShowType showType;
@@ -43,12 +42,10 @@ public class ShowEntity {
     @UpdateTimestamp
     private Date updatedOn;
 
-
     //This is child wrt to the movieEntity
     @ManyToOne
     @JoinColumn
     private MovieEntity movieEntity;
-
 
     @ManyToOne
     @JoinColumn

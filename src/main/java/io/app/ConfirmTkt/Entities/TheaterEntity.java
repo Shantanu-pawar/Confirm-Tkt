@@ -26,10 +26,11 @@ public class TheaterEntity {
 
     private String location;
 
-    //This is the parent wrt to theaterSeats
+    //we've to set this attribute in theaterSeatEntity also
     @OneToMany(mappedBy = "theaterEntity",cascade = CascadeType.ALL)
     private List<TheaterSeatEntity> theaterSeatEntityList = new ArrayList<>();
 
+    // whenever we creating the show at time we'll set this attribute in showService
     @OneToMany(mappedBy = "theaterEntity",cascade = CascadeType.ALL)
     private List<ShowEntity> showEntityList = new ArrayList<>();
 

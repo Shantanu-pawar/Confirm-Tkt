@@ -2,15 +2,17 @@ package io.app.ConfirmTkt.EntryDto;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 public class TicketEntryDto {
+
+//    showId parameter get all the information of movieName, theaterName, date,time so we can get it.
     private int showId;
+
+//    this return's all the seat's that we've booked
     private List<String> requestedSeats = new ArrayList<>();
+
     private int userId;
 }
