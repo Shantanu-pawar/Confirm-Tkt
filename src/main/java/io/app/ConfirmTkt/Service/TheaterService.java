@@ -30,11 +30,10 @@ public class TheaterService {
         TheaterEntity theaterEntity = TheaterConverter.convertDtoToEntity(theaterEntryDto);
 
         /*this concept explanation:
-      we've to set the remaining Attributes from entity, now in order to set this we've to create List
+      we've to set the remaining Attributes from entity,
         |
-      and now we're just created an list of type theaterSeatEntity so we also have to save that to complete this
-      process
-      so the same process is we've to set TheaterSeatEntities attributes in
+      and now we're just created an list of type theaterSeatEntity, so we also have to save
+      same process is we've to set TheaterSeatEntities attributes in
         |
     now the remaining attributes from DTO is classicSeatsCount; premiumSeatsCount; so that's what we're saving
     so create this entities, put them into list and save it. and then save ALL
@@ -53,7 +52,7 @@ public class TheaterService {
         int noOfClassicSeats = theaterEntryDto.getClassicSeatsCount();
         int noOfPremiumSeats = theaterEntryDto.getPremiumSeatsCount();
 
-        List<TheaterSeatEntity> theaterSeatEntityList = new ArrayList<>();s
+        List<TheaterSeatEntity> theaterSeatEntityList = new ArrayList<>();
 
         // now here create classic seats and premium seats
         for (int i = 1; i <= noOfClassicSeats; i++) {

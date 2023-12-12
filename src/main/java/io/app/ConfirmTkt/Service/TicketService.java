@@ -26,23 +26,23 @@ public class TicketService {
     public String bookTicket(TicketEntryDto ticketEntryDto) throws Exception{
     //the 3 step process : we have to set the attributes | set the foreign key | save it.
 
-        // step 1. convert the DTO to entity for saving
+        //1. Create TicketEntity from entryDto : Convert DTO ---> Entity
         TicketEntity ticketEntity = TicketConverter.convertDtoToEntity(ticketEntryDto);
 
-//this function is for validation for checking requested seats are available for booking or not
+        //Validation : Check if the requested seats are available or not ?
         boolean isValid = checkValidityOfRequestedSeats(ticketEntryDto);
-
-        if(isValid == false){
+        if(!isValid){
             throw new Exception("Requested seats are not available");
         }
 
         // calculate the total amount for seats
         ShowEntity showEntity = showRepository.findById(ticketEntryDto.getShowId()).get();
-        List<ShowSeatEntity> showSeatEntityList = showEntity.getListOfShowSeats();
-        List<String> requestedSeats = ticketEntryDto.getRequestedSeats();
+        List<ShowSeatEntity> seatEntityList = showEntity.getListOfShowSeats();
+        List<String> requestedSeats = ticketEntryDto.getRequestedSeats(); // this returns the booking seats string
 
         int totalAmount=0;
-        for(ShowSeatEntity showSeatEntity : showSeatEntityList){
+        for(ShowSeatEntity showSeatEntity : seatEntityList){
+
             if(requestedSeats.contains(showSeatEntity.getSeatNo())){
                 totalAmount = totalAmount + showSeatEntity.getPrice();
 
@@ -120,5 +120,4 @@ public class TicketService {
 //    all the seats requested were available
         return true;
     }
-
 }
